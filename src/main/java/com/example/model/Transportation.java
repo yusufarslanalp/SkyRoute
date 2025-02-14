@@ -1,11 +1,13 @@
 package com.example.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@Builder
 @Table(name = "transportaion")
 public class Transportation {
     @Id
