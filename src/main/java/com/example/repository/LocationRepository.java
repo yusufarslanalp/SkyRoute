@@ -4,7 +4,9 @@ package com.example.repository;
 import com.example.model.Location;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface LocationRepository extends JpaRepository<Location, Long> {
+import java.util.Optional;
 
+public interface LocationRepository extends JpaRepository<Location, Long> {
+    Optional<Location> findById(Long id);
 
 }

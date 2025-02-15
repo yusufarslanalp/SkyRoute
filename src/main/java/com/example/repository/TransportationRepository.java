@@ -8,8 +8,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface TransportationRepository extends JpaRepository<Transportation, Long> {
+    Optional<Transportation> findById(Long id);
     List<Transportation> findByFrom(Location from);
 
     List<Transportation> findByTo(Location from);
