@@ -3,6 +3,7 @@ package com.example.repository;
 
 import com.example.model.Location;
 import com.example.model.Transportation;
+import com.example.model.TransportationType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -20,4 +21,7 @@ public interface TransportationRepository extends JpaRepository<Transportation, 
     //List<Transportation> findByFromInAndToIn(@Param("fromList") List<Location> fromList, @Param("toList") List<Location> toList);
 
     List<Transportation> findByFromAndTo(Location from, Location to);
+
+    List<Transportation> findByFromAndToAndType(Location from, Location to, TransportationType type);
+
 }

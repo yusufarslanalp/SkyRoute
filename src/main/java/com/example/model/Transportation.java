@@ -25,4 +25,18 @@ public class Transportation {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "to_id")
 	private Location to;
+
+	public boolean isThereChange(Transportation second){
+		if(this.to.getId() == second.getFrom().getId()){
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isFlight(){
+		if(type == TransportationType.FLIGHT){
+			return true;
+		}
+		return false;
+	}
 }
