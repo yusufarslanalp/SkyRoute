@@ -1,5 +1,6 @@
 package com.example.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,6 +34,7 @@ public class Transportation {
 		return false;
 	}
 
+	@JsonIgnore
 	public boolean isFlight(){
 		if(type == TransportationType.FLIGHT){
 			return true;

@@ -1,5 +1,7 @@
 package com.example.service;
 
+import com.example.dto.RouteDto;
+import com.example.dto.RouteDtoConverter;
 import com.example.model.Location;
 import com.example.model.Transportation;
 import com.example.model.TransportationType;
@@ -18,7 +20,7 @@ public class RouteService {
     private final TransportationRepository transportationRepository;
     private final LocationRepository locationRepository;
 
-    public List<List<Transportation>> getRoutes(Long fromId, Long toId) {
+    public List<RouteDto> getRoutes(Long fromId, Long toId) {
         Location from = locationRepository.findById(fromId).get();
         Location to = locationRepository.findById(toId).get();
 
@@ -32,7 +34,7 @@ public class RouteService {
         addRoutesFor3Transportation(routes, firstTransportations, lastTransportations);
 
 
-        return routes;
+        return RouteDtoConverter.convert(routes);
     }
 
     private void addRouteForDirectFlight(List<List<Transportation>> routes, Location from, Location to) {
