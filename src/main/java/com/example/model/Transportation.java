@@ -20,10 +20,10 @@ public class Transportation {
 	private Long id;
 	@Enumerated(EnumType.STRING)
 	private TransportationType type;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "from_id")
 	private Location from;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "to_id")
 	private Location to;
 

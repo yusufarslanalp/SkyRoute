@@ -26,4 +26,8 @@ public class LocationService {
     public void deleteLocation(Long locationId){
         locationRepository.deleteById(locationId);
     }
+
+    public Location findById(Long id){
+        return locationRepository.findById(id).get();
+    }
 }
