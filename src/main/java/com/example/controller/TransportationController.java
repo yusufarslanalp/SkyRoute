@@ -21,8 +21,8 @@ public class TransportationController {
     }
 
     @PostMapping
-    public void createTransportation(@RequestBody CreateTransportationDto createTransportationDto){
-        transportationService.saveTransportation(createTransportationDto);
+    public Transportation createTransportation(@RequestBody CreateTransportationDto createTransportationDto){
+        return transportationService.saveTransportation(createTransportationDto);
     }
 
     @DeleteMapping("/{transportationId}")

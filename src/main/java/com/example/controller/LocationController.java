@@ -21,8 +21,8 @@ public class LocationController {
 
 
     @PostMapping
-    public void createLocation(@RequestBody Location location){
-        locationService.saveLocation(location);
+    public Location createLocation(@RequestBody Location location){
+        return locationService.saveLocation(location);
     }
 
     @DeleteMapping("/{locationId}")

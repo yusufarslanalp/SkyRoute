@@ -22,10 +22,10 @@ public class TransportationService {
         return transportationRepository.findAll();
     }
 
-    public void saveTransportation(CreateTransportationDto createTransportationDto){
+    public Transportation saveTransportation(CreateTransportationDto createTransportationDto){
         Location from = locationService.findById(createTransportationDto.getFromId());
         Location to = locationService.findById(createTransportationDto.getToId());
-        transportationRepository.save(Transportation.builder()
+        return transportationRepository.save(Transportation.builder()
                 .from(from)
                 .to(to).type(createTransportationDto.getType())
                 .build());
