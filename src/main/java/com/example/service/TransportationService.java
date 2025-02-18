@@ -2,6 +2,7 @@ package com.example.service;
 
 
 import com.example.dto.CreateTransportationDto;
+import com.example.dto.UpdateTransportationDto;
 import com.example.exception.InvalidRequest;
 import com.example.model.Location;
 import com.example.model.Transportation;
@@ -35,6 +36,13 @@ public class TransportationService {
                 .from(from)
                 .to(to).type(createTransportationDto.getType())
                 .build());
+    }
+
+    public Transportation updateTransportation(Long transportationId, UpdateTransportationDto updateTransportationDto){
+        Transportation transportation = transportationRepository.findById(transportationId).get();
+        transportation.setType(updateTransportationDto.getType());
+        transportationRepository.save(transportation);
+        return transportation;
     }
 
     public void deleteTransportation(Long transportationId){

@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.dto.CreateTransportationDto;
+import com.example.dto.UpdateTransportationDto;
 import com.example.model.Transportation;
 import com.example.service.TransportationService;
 import lombok.AllArgsConstructor;
@@ -25,6 +26,12 @@ public class TransportationController {
     @PostMapping
     public Transportation createTransportation(@Valid @RequestBody CreateTransportationDto createTransportationDto){
         return transportationService.saveTransportation(createTransportationDto);
+    }
+
+    @PutMapping("/{transportationId}")
+    public Transportation updateTransportation( @PathVariable @NotNull Long transportationId,
+            @Valid @RequestBody UpdateTransportationDto updateTransportationDto){
+        return transportationService.updateTransportation(transportationId, updateTransportationDto);
     }
 
     @DeleteMapping("/{transportationId}")

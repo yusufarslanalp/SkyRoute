@@ -21,9 +21,13 @@ public class LocationController {
         return locationService.getLocations();
     }
 
-
     @PostMapping
     public Location createLocation(@RequestBody @Valid Location location){
+        return locationService.saveLocation(location);
+    }
+
+    @PutMapping
+    public Location updateLocation(@RequestBody @Valid Location location){
         return locationService.saveLocation(location);
     }
 
