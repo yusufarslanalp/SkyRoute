@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class RouteDto {
-    int id;
-    int flightIndex;
-    List<Transportation> transportations;
+    private int id;
+    private int flightIndex;
+    private List<Transportation> transportations;
 }

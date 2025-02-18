@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.dto.RouteDto;
 import com.example.dto.RouteDtoConverter;
+import com.example.exception.InvalidRequest;
 import com.example.model.Location;
 import com.example.model.Transportation;
 import com.example.model.TransportationType;
@@ -21,6 +22,10 @@ public class RouteService {
     private final LocationRepository locationRepository;
 
     public List<RouteDto> getRoutes(Long fromId, Long toId) {
+        if (fromId.equals(toId)) {
+            throw new InvalidRequest("origin and destination can not be same of a route");
+        }
+
         Location from = locationRepository.findById(fromId).get();
         Location to = locationRepository.findById(toId).get();
 

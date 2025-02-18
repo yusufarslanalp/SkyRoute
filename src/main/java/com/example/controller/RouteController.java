@@ -10,18 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
-@RequestMapping( "route" )
+@RequestMapping("route")
 @AllArgsConstructor
 public class RouteController {
     private final RouteService routeService;
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
-    public List<RouteDto> getAllLocations(@RequestParam Long fromId, @RequestParam Long toId){
+    public List<RouteDto> getAllLocations(@RequestParam @NotNull Long fromId,
+                                                          @RequestParam @NotNull Long toId) {
         return routeService.getRoutes(fromId, toId);
     }
-
 }

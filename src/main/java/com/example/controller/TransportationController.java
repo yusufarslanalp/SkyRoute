@@ -6,6 +6,8 @@ import com.example.service.TransportationService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -21,12 +23,12 @@ public class TransportationController {
     }
 
     @PostMapping
-    public Transportation createTransportation(@RequestBody CreateTransportationDto createTransportationDto){
+    public Transportation createTransportation(@Valid @RequestBody CreateTransportationDto createTransportationDto){
         return transportationService.saveTransportation(createTransportationDto);
     }
 
     @DeleteMapping("/{transportationId}")
-    public void deleteLocation(@PathVariable Long transportationId){
+    public void deleteLocation(@PathVariable @NotNull Long transportationId){
         transportationService.deleteTransportation(transportationId);
     }
 

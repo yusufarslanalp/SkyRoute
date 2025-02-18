@@ -2,6 +2,7 @@ package com.example.service;
 
 
 import com.example.dto.CreateTransportationDto;
+import com.example.exception.InvalidRequest;
 import com.example.model.Location;
 import com.example.model.Transportation;
 import com.example.repository.TransportationRepository;
@@ -23,6 +24,11 @@ public class TransportationService {
     }
 
     public Transportation saveTransportation(CreateTransportationDto createTransportationDto){
+        if (createTransportationDto.getFromId()
+                .equals(createTransportationDto.getToId())) {
+            throw new InvalidRequest("origin and destination can not be same of a transportation");
+        }
+
         Location from = locationService.findById(createTransportationDto.getFromId());
         Location to = locationService.findById(createTransportationDto.getToId());
         return transportationRepository.save(Transportation.builder()

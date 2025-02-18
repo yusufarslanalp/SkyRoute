@@ -5,6 +5,8 @@ import com.example.service.LocationService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -21,12 +23,12 @@ public class LocationController {
 
 
     @PostMapping
-    public Location createLocation(@RequestBody Location location){
+    public Location createLocation(@RequestBody @Valid Location location){
         return locationService.saveLocation(location);
     }
 
     @DeleteMapping("/{locationId}")
-    public void deleteLocation(@PathVariable Long locationId){
+    public void deleteLocation(@PathVariable @NotNull Long locationId){
         locationService.deleteLocation(locationId);
     }
 }

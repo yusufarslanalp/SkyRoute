@@ -28,7 +28,7 @@ public class Transportation {
 	private Location to;
 
 	public boolean isThereChange(Transportation second){
-		if(this.to.getId() == second.getFrom().getId()){
+		if(this.to.getId().equals(second.getFrom().getId())){
 			return true;
 		}
 		return false;
